@@ -366,17 +366,36 @@ public class PlayerJoinListener implements Listener {
             User user = luckPerms.getUserManager().getUser(player.getUniqueId());
             if (user == null) return false;
             
-            // Kiểm tra quyền *
+            // Kiểm tra quyền * trước
             if (user.getCachedData().getPermissionData(QueryOptions.defaultContextualOptions())
                     .checkPermission("*").asBoolean()) {
                 return true;
             }
             
-            // Kiểm tra các quyền nguy hiểm khác
+            // Kiểm tra từng quyền nguy hiểm cụ thể
             for (String permission : dangerousPermissions) {
-                if (user.getCachedData().getPermissionData(QueryOptions.defaultContextualOptions())
-                        .checkPermission(permission).asBoolean()) {
-                    return true;
+                // Kiểm tra quyền chính xác (không dùng startsWith)
+                if (permission.endsWith("*")) {
+                    // Đối với quyền wildcard như "bukkit.*", kiểm tra prefix
+                    String prefix = permission.substring(0, permission.length() - 1);
+                    if (user.getCachedData().getPermissionData(QueryOptions.defaultContextualOptions())
+                            .checkPermission(permission).asBoolean()) {
+                        return true;
+                    }
+                    // Kiểm tra thêm các quyền con có prefix này
+                    for (String userPerm : user.getCachedData().getPermissionData(QueryOptions.defaultContextualOptions()).getPermissionMap().keySet()) {
+                        if (userPerm.startsWith(prefix) && 
+                            user.getCachedData().getPermissionData(QueryOptions.defaultContextualOptions())
+                                .checkPermission(userPerm).asBoolean()) {
+                            return true;
+                        }
+                    }
+                } else {
+                    // Đối với quyền cụ thể, kiểm tra chính xác
+                    if (user.getCachedData().getPermissionData(QueryOptions.defaultContextualOptions())
+                            .checkPermission(permission).asBoolean()) {
+                        return true;
+                    }
                 }
             }
             
