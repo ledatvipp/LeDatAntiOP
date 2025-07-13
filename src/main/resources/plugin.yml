@@ -1,0 +1,19 @@
+name: LeDatAntiOP
+version: '1.0'
+main: org.ledat.leDatAntiOP.LeDatAntiOP
+api-version: '1.19'
+authors: [ zonecluck ]
+website: facebook.com/zonecluck
+libraries:
+  - "com.mysql:mysql-connector-j:9.1.0"
+  - "com.google.protobuf:protobuf-java:4.26.1"
+  - "org.xerial:sqlite-jdbc:3.46.0.0"
+  - "org.slf4j:slf4j-api:1.7.36"
+commands:
+  antiopreload:
+    description: Reload plugin AntiOP
+    permission: antiop.admin
+permissions:
+  antiop.admin:
+    description: Quản lý plugin AntiOP
+    default: op
