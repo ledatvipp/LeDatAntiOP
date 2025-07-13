@@ -44,7 +44,7 @@ public class LeDatAntiOP extends JavaPlugin {
             Class.forName("org.slf4j.Logger"); // Kiểm tra SLF4J
 
         } catch (ClassNotFoundException e) {
-            getLogger().severe("❌ Không thể tải một số thư viện cần thiết! Plugin có thể không hoạt động đúng.");
+            getLogger().severe("Không thể tải một số thư viện cần thiết! Plugin có thể không hoạt động đúng.");
             e.printStackTrace();
         }
     }
@@ -56,9 +56,9 @@ public class LeDatAntiOP extends JavaPlugin {
     private void setupLuckPerms() {
         try {
             luckPerms = LuckPermsProvider.get();
-            getLogger().info("✅ Đã hook vào LuckPerms!");
+            getLogger().info("Đã hook vào LuckPerms!");
         } catch (Exception e) {
-            getLogger().warning("❌ Không tìm thấy LuckPerms! Một số tính năng có thể không hoạt động.");
+            getLogger().warning("Không tìm thấy LuckPerms! Một số tính năng có thể không hoạt động.");
             luckPerms = null;
         }
     }

@@ -13,10 +13,10 @@ database:
 
 # Discord Configuration
 discord:
-  token: "MTM0ODkyNDc2NDM0OTAwOTk4Mg.GGUc0C.P0zaquNkxZCCpu8YKcuzA3Je3B0HHKwWNzP_d4"
-  guild-id: "1332294543286079529"
-  channel-id: "1358684024075452517"
-  command-channel-id: "1358684024075452517"
+  token: ""
+  guild-id: ""
+  channel-id: ""
+  command-channel-id: ""
 
 # Dangerous Permissions (có thể config)
 dangerous-permissions:
@@ -34,22 +34,9 @@ dangerous-permissions:
   - "placeholderapi.admin"
   - "playerpoints.*"
   - "serverprotector.admin"
-  - "essentials.*"
   - "fawe.bypass"
-  - "essentials.powertool.append"
-  - "essentials.gamemode.creative"
   - "luckperms.sync"
-  - "essentials.sudo"
-  - "essentials.sudo.multiple"
-  - "essentials.sudo.exempt"
-  - "essentials.clearinventory"
-  - "essentials.clearinventory.all"
-  - "essentials.clearinventory.multiple"
-  - "essentials.clearinventory.others"
-  - "essentials.eco"
-  - "essentials.powertool"
   - "worldedit.generation.sphere"
-  - "essentials.gamemode"
 
 dangerous-commands:
   - "//sphere"
